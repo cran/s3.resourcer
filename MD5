@@ -1,0 +1,13 @@
+00aa0729f20be9031e0ad7adc1ae68ac *DESCRIPTION
+ed0dda78d015fa0b94a3207abd55b692 *NAMESPACE
+964281c89e19dcb60f49fef7c192712c *R/S3FileResourceGetter.R
+8da6829cfdd655d8b9de400941942aa1 *R/S3SparkResourceConnector.R
+b59c6405a3668fa7eb8d541999eec464 *R/zzz.R
+51f250652a8c6d53fdbb6eab913341f0 *README.md
+8227822641eacd2be9836fe270f61702 *inst/resources/resource.js
+4ee2c7d7e2f93b09bcfa07e85baf26a9 *man/S3FileResourceGetter.Rd
+4f5cffd71eccd7f44a0e1e29270c781d *man/S3SparkResourceConnector.Rd
+0f44eff6b23e9eba054b25228d3a9c03 *tests/testthat.R
+42a65a2239ff21749c0136047e1ed312 *tests/testthat/data/dataset.csv
+aff854fc1815e933fbdc284e085f002d *tests/testthat/data/dataset.sav
+87f2b6859cbea36c919c8fa065ee89c6 *tests/testthat/test-resource.R
