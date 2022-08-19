@@ -45,24 +45,35 @@ S3SparkResourceConnector <- R6::R6Class(
         conf$`spark.hadoop.fs.s3a.aws.credentials.provider` <- "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider"
         conf$`spark.hadoop.fs.s3a.path.style.access` <- "true"
         conf$`spark.hadoop.fs.s3a.connection.ssl.enabled` <- "true"
-        if (!is.null(url$query) && !is.null(url$query$read) && url$query$read == "delta") {
-          conf$`spark.sql.extensions` <- "io.delta.sql.DeltaSparkSessionExtension"
-          conf$`spark.sql.catalog.spark_catalog` <- "org.apache.spark.sql.delta.catalog.DeltaCatalog"
-          conf$`spark.databricks.delta.retentionDurationCheck.enabled` <- "false"
+        master <- "local"
+        version <- NULL
+        for (n in names(url$query)) {
+          if (n == "master") {
+            master <- url$query$master
+          } else if (n == "version") {
+            version <- url$query$version
+          } else if (n == "read") {
+            if (url$query$read == "delta") {
+              conf$`spark.sql.extensions` <- "io.delta.sql.DeltaSparkSessionExtension"
+              conf$`spark.sql.catalog.spark_catalog` <- "org.apache.spark.sql.delta.catalog.DeltaCatalog"
+              conf$`spark.databricks.delta.retentionDurationCheck.enabled` <- "false"  
+            }
+          } else {
+            conf[n] <- url$query[[n]]
+          }
         }
         
         if (identical(url$scheme, "s3+spark")) {
           # FIXME host = aws region ?
           conf$`spark.hadoop.fs.s3a.endpoint` <- url$host
-          conn <- sparklyr::spark_connect(master = "local", config = conf)
+          conn <- sparklyr::spark_connect(master = master, version = version, config = conf)
         } else {
           protocol <- "http"
           if (identical(url$scheme, "s3+spark+https")) {
             protocol <- "https"
           }
           conf$`spark.hadoop.fs.s3a.endpoint` <- paste0(protocol, "://", url$hostname, ifelse(is.null(url$port), "", paste0(":", url$port)))
-          
-          conn <- sparklyr::spark_connect(master = "local", config = conf)
+          conn <- sparklyr::spark_connect(master = master, version = version, config = conf)
         }
       } else {
         stop("Resource is not located in Apache Spark")

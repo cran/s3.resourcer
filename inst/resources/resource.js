@@ -467,6 +467,12 @@ var s3_resourcer = {
               "description": "The S3 object path."
             },
             {
+              "key": "master",
+              "type": "string",
+              "title": "Spark cluster name/url",
+              "description": "The Spark cluster url to connect to. Use 'local' (default) to connect to a local instance of Spark."
+            },
+            {
               "key": "read",
               "type": "string",
               "title": "File read strategy",
@@ -481,6 +487,13 @@ var s3_resourcer = {
                   "title":"Delta Lake read"
                 }
               ]
+            },
+            {
+              "key": "config",
+              "type": "string",
+              "format": "textarea",
+              "title": "Spark configuration",
+              "description": "Spark configuration options. One option per line, in the format 'key=value'."
             }
           ],
           "required": [
@@ -530,6 +543,12 @@ var s3_resourcer = {
               "description": "The S3 object path."
             },
             {
+              "key": "master",
+              "type": "string",
+              "title": "Spark cluster name/url",
+              "description": "The Spark cluster url to connect to. Use 'local' (default) to connect to a local instance of Spark."
+            },
+            {
               "key": "read",
               "type": "string",
               "title": "File read strategy",
@@ -544,6 +563,13 @@ var s3_resourcer = {
                   "title":"Delta Lake read"
                 }
               ]
+            },
+            {
+              "key": "config",
+              "type": "string",
+              "format": "textarea",
+              "title": "Spark configuration",
+              "description": "Spark configuration options. One option per line, in the format 'key=value'."
             }
           ],
           "required": [
@@ -611,23 +637,42 @@ var s3_resourcer = {
       }
       return resource;
     };
-
+    
+    var makeSparkQuery = function(params) {
+      var query = [];
+      if (params.master) {
+        query.push("master=" + params.master);
+      }
+      if (params.read) {
+        query.push("read=" + params.read);
+      }
+      if (params.config) {
+        var configs = params.config.split("\n");
+        for (var i = 0; i < configs.length; i++) {
+        	query.push(configs[i]);
+        }
+      }
+      return query;
+    }
+    
     var toSparkResource = function(name, params, credentials) {
-        return {
-            name: name,
-            url: "s3+spark://" + params.bucket + "/" + params.obj+ "?read=" + params.read,
-            identity: credentials.awskey,
-            secret: credentials.awssecret
-        };
+      var query = makeSparkQuery(params);
+      return {
+          name: name,
+          url: "s3+spark://" + params.bucket + "/" + params.obj + (query.length > 0 ? "?" + query.join("&") : ""),
+          identity: credentials.awskey,
+          secret: credentials.awssecret
+      };
     };
     
     var toHttpS3SparkResource = function(name, params, credentials) {
-        return {
-            name: name,
-            url: "s3+spark+" + params.url + "/" + params.obj+ "?read=" + params.read,
-            identity: credentials.awskey,
-            secret: credentials.awssecret
-        };
+      var query = makeSparkQuery(params);
+      return {
+          name: name,
+          url: "s3+spark+" + params.url + "/" + params.obj + (query.length > 0 ? "?" + query.join("&") : ""),
+          identity: credentials.awskey,
+          secret: credentials.awssecret
+      };
     };
 
     //

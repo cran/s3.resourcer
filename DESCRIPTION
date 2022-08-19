@@ -1,7 +1,7 @@
 Package: s3.resourcer
 Type: Package
 Title: S3 Resource Resolver
-Version: 1.0.1
+Version: 1.1.0
 Authors@R: 
     c(person(given = "Yannick",
              family = "Marcon",
@@ -11,19 +11,19 @@ Authors@R:
       person("OBiBa group",
              role="cph",
              email="info@obiba.org"))
-Description: Resources are files in tidy or R data format stored in a S3 compatible system, such as 
-  Amazon Web Services S3 or Minio object stores. Resources can also be Parquet files, accessed through
-  an Apache Spark service.
+Description: A S3 resource is provided by Amazon Web Services S3 or a S3-compatible object store (such as Minio). 
+    The resource can be a tidy file to be downloaded from the object store, or a data lake (such as Delta Lake) 
+    Parquet file to be read by Apache Spark.
 License: LGPL (>= 2.1)
 Depends: R6, httr, resourcer (>= 1.2), aws.s3, sparklyr
 Suggests: testthat, knitr
 BugReports: https://github.com/obiba/s3.resourcer
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Encoding: UTF-8
 NeedsCompilation: no
-Packaged: 2022-05-11 07:18:32 UTC; yannick
+Packaged: 2022-08-19 17:47:32 UTC; yannick
 Author: Yannick Marcon [aut, cre] (<https://orcid.org/0000-0003-0138-2023>),
   OBiBa group [cph]
 Maintainer: Yannick Marcon <yannick.marcon@obiba.org>
 Repository: CRAN
-Date/Publication: 2022-05-12 08:40:02 UTC
+Date/Publication: 2022-08-19 18:30:02 UTC

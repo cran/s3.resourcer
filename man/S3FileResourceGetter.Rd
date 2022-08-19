@@ -23,23 +23,23 @@ Credentials may apply.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{S3FileResourceGetter$new()}}
-\item \href{#method-isFor}{\code{S3FileResourceGetter$isFor()}}
-\item \href{#method-downloadFile}{\code{S3FileResourceGetter$downloadFile()}}
-\item \href{#method-clone}{\code{S3FileResourceGetter$clone()}}
+\item \href{#method-S3FileResourceGetter-new}{\code{S3FileResourceGetter$new()}}
+\item \href{#method-S3FileResourceGetter-isFor}{\code{S3FileResourceGetter$isFor()}}
+\item \href{#method-S3FileResourceGetter-downloadFile}{\code{S3FileResourceGetter$downloadFile()}}
+\item \href{#method-S3FileResourceGetter-clone}{\code{S3FileResourceGetter$clone()}}
 }
 }
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-\item \out{<span class="pkg-link" data-pkg="resourcer" data-topic="FileResourceGetter" data-id="extractFileName">}\href{../../resourcer/html/FileResourceGetter.html#method-extractFileName}{\code{resourcer::FileResourceGetter$extractFileName()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="resourcer" data-topic="FileResourceGetter" data-id="makeDownloadDir">}\href{../../resourcer/html/FileResourceGetter.html#method-makeDownloadDir}{\code{resourcer::FileResourceGetter$makeDownloadDir()}}\out{</span>}
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="resourcer" data-topic="FileResourceGetter" data-id="extractFileName"><a href='../../resourcer/html/FileResourceGetter.html#method-FileResourceGetter-extractFileName'><code>resourcer::FileResourceGetter$extractFileName()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="resourcer" data-topic="FileResourceGetter" data-id="makeDownloadDir"><a href='../../resourcer/html/FileResourceGetter.html#method-FileResourceGetter-makeDownloadDir'><code>resourcer::FileResourceGetter$makeDownloadDir()</code></a></span></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-S3FileResourceGetter-new"></a>}}
+\if{latex}{\out{\hypertarget{method-S3FileResourceGetter-new}{}}}
 \subsection{Method \code{new()}}{
 Creates a new S3FileResourceGetter instance.
 \subsection{Usage}{
@@ -51,8 +51,8 @@ A S3FileResourceGetter object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isFor"></a>}}
-\if{latex}{\out{\hypertarget{method-isFor}{}}}
+\if{html}{\out{<a id="method-S3FileResourceGetter-isFor"></a>}}
+\if{latex}{\out{\hypertarget{method-S3FileResourceGetter-isFor}{}}}
 \subsection{Method \code{isFor()}}{
 Check that the provided resource has a URL that locates a file accessible through "s3" protocol or 
 "s3+http" or "s3+https" protocol (i.e. using Minio implementation of the AWS S3 file store API over HTTP).
@@ -72,8 +72,8 @@ A logical.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-downloadFile"></a>}}
-\if{latex}{\out{\hypertarget{method-downloadFile}{}}}
+\if{html}{\out{<a id="method-S3FileResourceGetter-downloadFile"></a>}}
+\if{latex}{\out{\hypertarget{method-S3FileResourceGetter-downloadFile}{}}}
 \subsection{Method \code{downloadFile()}}{
 Download the file from the remote address in a temporary location. Applies authentication if credentials are provided in the resource.
 \subsection{Usage}{
@@ -94,8 +94,8 @@ The "resource.file" object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-S3FileResourceGetter-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-S3FileResourceGetter-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
