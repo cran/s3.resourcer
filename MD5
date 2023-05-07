@@ -1,7 +1,7 @@
-3dba241c1713dc19d4a05b31c35a49d6 *DESCRIPTION
+223f6aeda960612e8791dff787ad2600 *DESCRIPTION
 ed0dda78d015fa0b94a3207abd55b692 *NAMESPACE
 964281c89e19dcb60f49fef7c192712c *R/S3FileResourceGetter.R
-f23e14ff82816bd209d93a52eb91b405 *R/S3SparkResourceConnector.R
+9bcee2ffe6266d77762720738e3b55d1 *R/S3SparkResourceConnector.R
 b59c6405a3668fa7eb8d541999eec464 *R/zzz.R
 51f250652a8c6d53fdbb6eab913341f0 *README.md
 c1bd4d62f23640fcbe828515a2feecf0 *inst/resources/resource.js

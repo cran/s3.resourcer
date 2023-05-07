@@ -66,14 +66,20 @@ S3SparkResourceConnector <- R6::R6Class(
         if (identical(url$scheme, "s3+spark")) {
           # FIXME host = aws region ?
           conf$`spark.hadoop.fs.s3a.endpoint` <- url$host
-          conn <- sparklyr::spark_connect(master = master, version = version, config = conf)
+          conn <- sparklyr::spark_connect(master = master, version = version, config = conf, spark_home = spark_home_dir())
         } else {
           protocol <- "http"
           if (identical(url$scheme, "s3+spark+https")) {
             protocol <- "https"
           }
           conf$`spark.hadoop.fs.s3a.endpoint` <- paste0(protocol, "://", url$hostname, ifelse(is.null(url$port), "", paste0(":", url$port)))
-          conn <- sparklyr::spark_connect(master = master, version = version, config = conf)
+          if (isTRUE(getOption("verbose"))) {
+            print(paste0("master=", master))
+            print(paste0("version=", version))
+            print(paste0("spark_home=", spark_home_dir()))
+            print(conf)
+          }
+          conn <- sparklyr::spark_connect(master = master, version = version, config = conf, spark_home = spark_home_dir())
         }
       } else {
         stop("Resource is not located in Apache Spark")
@@ -138,13 +144,16 @@ S3SparkResourceConnector <- R6::R6Class(
         message("Installing Apache Spark")
         # spark package
         spark_install(version="3.2.1", hadoop_version = "3.2")
-        spark_home_dir()
+      }
+      if (!is.null(spark_home_dir())) {
         # additional jars
         jars <- c("https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.3.1/hadoop-aws-3.3.1.jar",
                   "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.11.901/aws-java-sdk-bundle-1.11.901.jar",
                   "https://repo1.maven.org/maven2/io/delta/delta-core_2.12/1.1.0/delta-core_2.12-1.1.0.jar")
         lapply(jars, function(jar) {
-          httr::GET(jar, write_disk(file.path(spark_home_dir(), "jars", basename(jar)), overwrite = TRUE))
+          if (!file.exists(file.path(spark_home_dir(), "jars", basename(jar)))) {
+            httr::GET(jar, write_disk(file.path(spark_home_dir(), "jars", basename(jar)), overwrite = TRUE))
+          }
         })
       }
     }
