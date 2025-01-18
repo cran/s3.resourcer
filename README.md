@@ -1,9 +1,9 @@
 # S3 Resource R
 
 [![Build Status](https://travis-ci.com/obiba/s3.resourcer.svg?branch=master)](https://app.travis-ci.com/github/obiba/s3.resourcer)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/s3.resourcer)](https://cran.r-project.org/package=s3.resourcer)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/s3.resourcer)](https://cran.r-project.org/package=s3.resourcer)
 
-The `s3.resourcer` package is for accessing a file stored in the AWS S3 system or in a HTTP S3 compatible object store such as [minio](https://min.io/). It makes use of the [aws.s3](https://github.com/cloudyr/aws.s3) R package and of [sparklyr](https://spark.rstudio.com/) when the S3 file store is accessed through Apache Spark.
+The `s3.resourcer` package is for accessing a file stored in the AWS S3 system or in a HTTP S3 compatible object store such as [minio](https://min.io/). It makes use of the [aws.s3](https://github.com/cloudyr/aws.s3) R package and of [sparklyr](https://spark.posit.co/) when the S3 file store is accessed through Apache Spark.
 
 ### S3 File Getter
 

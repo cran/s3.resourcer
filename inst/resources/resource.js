@@ -40,7 +40,7 @@ var s3_resourcer = {
             }
           ],
           "required": [
-            "bucket", "object", "format"
+            "bucket", "obj", "format"
           ]
         },
         "credentials": {
@@ -93,7 +93,7 @@ var s3_resourcer = {
             }
           ],
           "required": [
-            "bucket", "object", "format"
+            "bucket", "obj", "format"
           ]
         },
         "credentials": {
@@ -204,7 +204,7 @@ var s3_resourcer = {
             }
           ],
           "required": [
-            "bucket", "object", "format"
+            "bucket", "obj", "format"
           ]
         },
         "credentials": {
@@ -257,7 +257,7 @@ var s3_resourcer = {
             }
           ],
           "required": [
-            "url", "object", "format"
+            "url", "obj", "format"
           ]
         },
         "credentials": {
@@ -310,7 +310,7 @@ var s3_resourcer = {
             }
           ],
           "required": [
-            "url", "object", "format"
+            "url", "obj", "format"
           ]
         },
         "credentials": {
@@ -421,7 +421,7 @@ var s3_resourcer = {
             }
           ],
           "required": [
-            "bucket", "object", "format"
+            "url", "obj", "format"
           ]
         },
         "credentials": {
@@ -497,7 +497,7 @@ var s3_resourcer = {
             }
           ],
           "required": [
-            "bucket", "object", "read"
+            "bucket", "obj", "read"
           ]
         },
         "credentials": {
@@ -573,7 +573,7 @@ var s3_resourcer = {
             }
           ],
           "required": [
-            "url", "object", "read"
+            "url", "obj", "read"
           ]
         },
         "credentials": {
